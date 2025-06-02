@@ -8,8 +8,9 @@
     "strict": true,
     "skipLibCheck": true,
     "outDir": "./dist",
-    "baseUrl": "."
+    "rootDir": "../",
+    "baseUrl": "../"
   },
-  "include": ["**/*.ts"],
-  "exclude": ["dist"]
+  "include": ["../server/**/*.ts", "../endpoint-tracker/src/shared-types/**/*.ts"],
+  "exclude": ["dist", "node_modules"]
 }
