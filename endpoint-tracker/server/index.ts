@@ -10,8 +10,9 @@ const endpoints = [
   'https://data--ap-southeast.upscope.io/status?stats=1',
 ];
 
-const wss = new WebSocketServer({ port: 8080 });
-console.log('WebSocket server started on ws://localhost:8080');
+const PORT = parseInt(process.env.PORT || '8080', 10);
+const wss = new WebSocketServer({ port: PORT });
+
 
 let cachedData: EndpointData[] = [];
 let isFetching = false;
