@@ -12,7 +12,7 @@
     "baseUrl": ".."
   },
   "include": [
-    "**/*.ts",
+    "**/*.ts",            
     "../shared-types/**/*.ts"
   ],
   "exclude": [
