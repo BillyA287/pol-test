@@ -1,5 +1,6 @@
 {
   "compilerOptions": {
+    "types": ["node"],
     "module": "CommonJS",
     "target": "ES2020",
     "moduleResolution": "node",
@@ -7,11 +8,8 @@
     "strict": true,
     "skipLibCheck": true,
     "outDir": "./dist",
-    "baseUrl": ".",
-    "paths": {
-      "@shared/*": ["../shared/*"] 
-    }
+    "baseUrl": "."
   },
-  "include": ["**/*.ts", "../shared/**/*.ts"], 
-  "exclude": ["dist"] 
+  "include": ["**/*.ts"],
+  "exclude": ["dist"]
 }
