@@ -11,6 +11,6 @@
     "rootDir": ".",
     "baseUrl": "."
   },
-  "include": ["./**/*.ts", "../endpoint-tracker/src/shared-types/**/*.ts"],
+  "include": ["./**/*.ts", "../shared-types/**/*.ts"],
   "exclude": ["dist", "node_modules"]
 }

@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import type { EndpointData } from '../shared-types/types';
+import type { EndpointData } from '../../shared-types/types';
 import './Card.css';
 
 type CardProps = Omit<EndpointData, 'status'> & {
