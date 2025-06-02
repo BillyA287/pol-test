@@ -1,6 +1,6 @@
 import WebSocket, { WebSocketServer } from 'ws';
 import axios from 'axios';
-import { EndpointData, EndpointResponse } from '../shared-types/types'; 
+import { EndpointData, EndpointResponse } from '../src/shared-types/types'; 
 const endpoints = [
   'https://data--us-east.upscope.io/status?stats=1',
   'https://data--eu-west.upscope.io/status?stats=1',

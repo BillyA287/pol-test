@@ -1,5 +1,5 @@
 import { useEffect, useState, useRef } from 'react';
-import type { EndpointData } from '../../shared-types/types';
+import type { EndpointData } from '../shared-types/types';
 
 type ConnectionStatus = 'connecting' | 'connected' | 'disconnected' | 'error';
 

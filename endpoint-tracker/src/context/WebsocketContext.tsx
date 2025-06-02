@@ -1,6 +1,6 @@
 import React, { createContext, useContext } from 'react';
 import useWebSocket from '../hooks/useWebsocket';
-import type { EndpointData } from '../../shared-types/types'; 
+import type { EndpointData } from '../shared-types/types'; 
 
 
 interface WebSocketContextType {
