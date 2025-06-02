@@ -8,9 +8,12 @@
     "strict": true,
     "skipLibCheck": true,
     "outDir": "./dist",
-    "rootDir": ".",
-    "baseUrl": "."
+    "rootDir": "..",                  
+    "baseUrl": ".."
   },
-  "include": ["./**/*.ts", "../shared-types/**/*.ts"],
+  "include": [
+    "../server/**/*.ts",
+    "../shared-types/**/*.ts"
+  ],
   "exclude": ["dist", "node_modules"]
 }
