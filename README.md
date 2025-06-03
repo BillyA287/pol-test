@@ -9,6 +9,8 @@
 - Broadcasts results to connected WebSocket clients.
 - Handles errors gracefully and provides detailed logs.
 - Designed for real-time monitoring of endpoint statuses.
+- Includes unit tests for the custom hooks.
+- Future plans to add integration tests for end-to-end functionality.
 
 ---
 
@@ -63,6 +65,11 @@ pol-test/
 │   ├── App.css           # Styles for the application
 ├── shared-types/
 │   ├── types.ts          # Shared TypeScript types
+├── __tests__/
+│   ├── unit/
+│   │   ├── hooks/
+│   │   │   ├── useWebsocket.test.tsx # Unit tests for the WebSocket hook
+│   ├── integration/      # (Planned) Integration tests for end-to-end functionality
 ├── README.md             # Project documentation
 ├── package.json          # Project dependencies and scripts
 ```
@@ -71,9 +78,22 @@ pol-test/
 
 ## Testing
 
+### Unit Tests
+
+- Unit tests have been written for the custom hooks, such as `useWebSocket`, to ensure their functionality is robust and reliable.
+
+### Integration Tests (Planned)
+
+- Integration tests will be added in the future to verify the interaction between the client and server, ensuring end-to-end functionality.
+
 ### Run Tests
 
-1. Add tests for the retry logic, WebSocket server.
+1. Run the test suite:
+   ```bash
+   npm test
+   ```
+
+---
 
 ## Logs
 
@@ -84,3 +104,9 @@ The server logs provide detailed information about:
 - WebSocket client connections and disconnections.
 
 ---
+
+## Future Plans
+
+- Add integration tests to verify the interaction between the client and server.
+- Enhance the UI for better user experience.
+- Add more robust error handling and retry mechanisms.
