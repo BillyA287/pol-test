@@ -12,17 +12,27 @@ export const useWebSocket = (url: string) => {
   const reconnectAttemptRef = useRef(0);
   const reconnectTimeoutRef = useRef<ReturnType<typeof setTimeout> | null>(null);
   const wsRef = useRef<WebSocket | null>(null);
+  const errorHandledRef = useRef(false);
+
+  const sendMessage = (message: string) => {
+    if (wsRef.current && wsRef.current.readyState === WebSocket.OPEN) {
+      wsRef.current.send(message);
+    } else {
+      setError('WebSocket is not open. Unable to send message.');
+    }
+  };
 
   useEffect(() => {
     const connect = () => {
       setConnectionState('connecting');
       setError(null);
+      errorHandledRef.current = false;
       wsRef.current = new WebSocket(url);
 
       wsRef.current.onopen = () => {
         setConnectionState('connected');
-        hasConnectedOnceRef.current = true; 
-        reconnectAttemptRef.current = 0; 
+        hasConnectedOnceRef.current = true;
+        reconnectAttemptRef.current = 0;
         setError(null);
       };
 
@@ -40,19 +50,24 @@ export const useWebSocket = (url: string) => {
       };
 
       wsRef.current.onerror = () => {
-        wsRef.current?.close(); 
+        errorHandledRef.current = true;
+        setConnectionState('error');
+        setError('error');
+        wsRef.current?.close();
       };
 
       wsRef.current.onclose = () => {
-        setConnectionState('disconnected');
+        if (!errorHandledRef.current) {
+          setConnectionState('disconnected');
+        }
 
         if (reconnectAttemptRef.current < 1) {
           reconnectAttemptRef.current += 1;
           reconnectTimeoutRef.current = setTimeout(() => {
             connect();
-          }, 5000); 
+          }, 5000);
         } else {
-          if (hasConnectedOnceRef.current) {
+          if (hasConnectedOnceRef.current && !errorHandledRef.current) {
             setConnectionState('error');
             setError('Failed to reconnect WebSocket after 1 attempt.');
           }
@@ -70,7 +85,7 @@ export const useWebSocket = (url: string) => {
     };
   }, [url]);
 
-  return { data, error, connectionState };
+  return { data, error, connectionState, sendMessage };
 };
 
 export default useWebSocket;

@@ -8,9 +8,8 @@
     "skipLibCheck": true,
 
     /* Bundler mode */
-    "moduleResolution": "bundler",
+    "moduleResolution": "node", 
     "allowImportingTsExtensions": true,
-    "verbatimModuleSyntax": true,
     "moduleDetection": "force",
     "noEmit": true,
     "jsx": "react-jsx",
@@ -21,7 +20,12 @@
     "noUnusedParameters": true,
     "erasableSyntaxOnly": true,
     "noFallthroughCasesInSwitch": true,
-    "noUncheckedSideEffectImports": true
+    "noUncheckedSideEffectImports": true,
+
+    "esModuleInterop": true, 
+
+    /* Jest and Testing Library types */
+    "types": ["jest", "node", "@testing-library/jest-dom"]
   },
-  "include": ["src", "shared-types"]
+  "include": ["src", "shared-types", "__tests__"] 
 }

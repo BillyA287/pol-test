@@ -1,18 +1,14 @@
-import React, { useState } from 'react';
+import React from 'react';
 import type { EndpointData } from '../../shared-types/types';
 import './Card.css';
 
 type CardProps = Omit<EndpointData, 'status'> & {
   status?: number;
+  isExpanded: boolean;
+  onExpand: () => void;
 };
 
-const Card: React.FC<CardProps> = ({ url, status, data, error }) => {
-  const [isExpanded, setIsExpanded] = useState(false);
-
-  const toggleExpand = () => {
-    setIsExpanded((prev) => !prev);
-  };
-
+const Card: React.FC<CardProps> = ({ url, status, data, error, isExpanded, onExpand }) => {
   return (
     <div className={`card ${isExpanded ? 'expanded' : ''}`}>
       <div className="card-header">
@@ -24,7 +20,7 @@ const Card: React.FC<CardProps> = ({ url, status, data, error }) => {
           </span>
         </p>
         {error && <p className="error">{error}</p>}
-        <button onClick={toggleExpand}>
+        <button onClick={onExpand}>
           {isExpanded ? 'Show Less' : 'Show More'}
         </button>
       </div>
